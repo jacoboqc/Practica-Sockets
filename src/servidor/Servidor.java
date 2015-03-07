@@ -24,8 +24,8 @@ public class Servidor {
 			System.out.println("Conexión establecida");
 			salida = new DataOutputStream(socket_conexion.getOutputStream());
 			Date fecha = new Date();
-			SimpleDateFormat formato_fecha = new SimpleDateFormat("HH-mm-ss");
-			String hora=formato_fecha.format(fecha.toString());
+			SimpleDateFormat formato_fecha = new SimpleDateFormat("HH:mm:ss");
+			String hora=formato_fecha.format(fecha);
 			salida.writeUTF(hora);
 			socket_conexion.close();
 			socket_servidor.close();
