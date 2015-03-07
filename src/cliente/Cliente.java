@@ -14,9 +14,11 @@ public class Cliente {
 		
 		try {
 			socket=new Socket(host, puerto);
-			
+			System.out.println("Conexión establecida correctamente");
+			entrada=new DataInputStream(socket.getInputStream());
+			System.out.println(entrada.readUTF());
+			socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
