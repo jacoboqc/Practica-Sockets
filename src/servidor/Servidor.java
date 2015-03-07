@@ -14,6 +14,7 @@ public class Servidor {
 		ServerSocket socket_servidor;
 		Socket socket_conexion;
 		DataOutputStream salida;
+		boolean corriendo=true;
 		
 		
 		try {
@@ -23,10 +24,12 @@ public class Servidor {
 			socket_conexion=socket_servidor.accept();
 			System.out.println("Conexión establecida");
 			salida = new DataOutputStream(socket_conexion.getOutputStream());
-			Date fecha = new Date();
-			SimpleDateFormat formato_fecha = new SimpleDateFormat("HH:mm:ss");
-			String hora=formato_fecha.format(fecha);
-			salida.writeUTF(hora);
+			while(corriendo){
+				Date fecha = new Date();
+				SimpleDateFormat formato_fecha = new SimpleDateFormat("HH:mm:ss");
+				String hora=formato_fecha.format(fecha);
+				salida.writeUTF(hora);
+			}
 			socket_conexion.close();
 			socket_servidor.close();
 		} catch (IOException e) {
