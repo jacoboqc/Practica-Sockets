@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class Servidor {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		final int puerto=500;
 		ServerSocket socket_servidor;
 		Socket socket_conexion;
@@ -29,6 +29,7 @@ public class Servidor {
 				SimpleDateFormat formato_fecha = new SimpleDateFormat("HH:mm:ss");
 				String hora=formato_fecha.format(fecha);
 				salida.writeUTF(hora);
+				Thread.sleep(1000);
 			}
 			socket_conexion.close();
 			socket_servidor.close();
