@@ -12,7 +12,6 @@ public class Cliente {
 		final String host = "localhost";
 		final int puerto = 500;
 		boolean corriendo = true;
-		boolean cerrar = false;
 		Socket socket;
 		DataInputStream entrada;
 		BufferedReader teclado = new BufferedReader (new InputStreamReader(System.in));
@@ -21,10 +20,10 @@ public class Cliente {
 			socket = new Socket(host, puerto);
 			System.out.println("Conexión establecida correctamente");
 			entrada = new DataInputStream(socket.getInputStream());
-			while (corriendo && !cerrar) {
+			while (corriendo) {
 				System.out.println(entrada.readUTF());
-				if(teclado.readLine().equalsIgnoreCase("C")){
-					cerrar=true;
+				if(teclado.ready() && teclado.readLine().equalsIgnoreCase("C")){
+					corriendo=false;
 				}
 			}
 			socket.close();
