@@ -29,7 +29,7 @@ public class Hilo extends Thread{
 			}
 			socket_conexion.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Conexión cerrada");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
