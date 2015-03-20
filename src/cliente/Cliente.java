@@ -9,8 +9,8 @@ import java.net.Socket;
 public class Cliente {
 
 	public static void main(String[] args) {
-		final String host = "localhost";
-		final int puerto = 500;
+		final String host = args[0];
+		final int puerto = Integer.parseInt(args[1]);
 		boolean corriendo = true;
 		Socket socket;
 		DataInputStream entrada;

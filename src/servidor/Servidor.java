@@ -7,7 +7,7 @@ import java.net.Socket;
 public class Servidor {
 
 	public static void main(String[] args) throws InterruptedException {
-		final int puerto=500;
+		final int puerto=Integer.parseInt(args[0]);
 		ServerSocket socket_servidor;
 		Socket socket_conexion;
 
