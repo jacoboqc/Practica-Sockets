@@ -8,18 +8,22 @@ public class Servidor {
 
 	public static void main(String[] args) throws InterruptedException {
 		final int puerto=Integer.parseInt(args[0]);
-		ServerSocket socket_servidor;
+		ServerSocket socket_servidor = null;
 		Socket socket_conexion;
+		boolean corriendo=true;
 
-		
 		
 		try {
 			socket_servidor=new ServerSocket(puerto);
-			socket_conexion=new Socket();
-			System.out.println("Esperando conexión...");
-			socket_conexion=socket_servidor.accept();
-			Hilo hilo=new Hilo(socket_conexion);
-			hilo.start();
+			int i=1;
+			while(corriendo){
+				socket_conexion=new Socket();
+				System.out.println("Esperando conexión...");
+				socket_conexion=socket_servidor.accept();
+				Hilo hilo=new Hilo(socket_conexion, i);
+				i++;
+				hilo.start();
+			}
 			socket_servidor.close();
 		} catch (IOException e) {
 			e.printStackTrace();

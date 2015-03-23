@@ -9,16 +9,18 @@ import java.util.Date;
 public class Hilo extends Thread{
 
 	Socket socket_conexion;
-	DataOutputStream salida;
+	int num_conex;
 	boolean corriendo=true;
 
-	public Hilo(Socket socket_conexion) {
+	public Hilo(Socket socket_conexion, int i) {
 		this.socket_conexion=socket_conexion;
+		this.num_conex=i;
 	}
 
 	public void run(){
 		try {
-			System.out.println("Conexión establecida");
+			DataOutputStream salida;
+			System.out.println("Conexión " + num_conex +" establecida");
 			salida = new DataOutputStream(socket_conexion.getOutputStream());
 			while(corriendo){
 				Date fecha = new Date();
@@ -29,7 +31,7 @@ public class Hilo extends Thread{
 			}
 			socket_conexion.close();
 		} catch (IOException e) {
-			System.out.println("Conexión cerrada");
+			System.out.println("Conexión " + num_conex + " cerrada");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
