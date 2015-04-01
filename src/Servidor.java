@@ -9,14 +9,14 @@ public class Servidor {
 		ServerSocket socket_servidor = null;
 		Socket socket_conexion;
 		boolean corriendo=true;
-
+		
+		System.out.println("Servidor iniciado\nEsperando conexión...");
 		
 		try {
 			socket_servidor=new ServerSocket(puerto);
 			int i=1;
 			while(corriendo){
 				socket_conexion=new Socket();
-				System.out.println("Esperando conexión...");
 				socket_conexion=socket_servidor.accept();
 				Hilo hilo=new Hilo(socket_conexion, i);
 				i++;

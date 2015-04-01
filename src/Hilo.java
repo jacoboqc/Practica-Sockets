@@ -30,6 +30,7 @@ public class Hilo extends Thread{
 			socket_conexion.close();
 		} catch (IOException e) {
 			System.out.println("Conexión " + num_conex + " cerrada");
+			this.interrupt();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
